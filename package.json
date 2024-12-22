@@ -1,0 +1,21 @@
+{
+  "name": "jenkins-pipeline",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test:unit": "npx mocha ./unit.test.mjs",
+    "test:integration": "npx mocha ./integration.test.mjs"
+  },
+  "keywords": [],
+  "author": "fadhil",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "chai": "^5.1.2",
+    "mocha": "^11.0.1",
+    "supertest": "^7.0.0"
+  }
+}
