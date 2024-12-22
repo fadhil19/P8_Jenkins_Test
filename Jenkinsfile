@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/username/node-ci-cd.git'
+                git branch: 'main', url: 'https://github.com/fadhil19/P8_Jenkins_Test'
             }
         }
         stage('Install Dependencies') {
