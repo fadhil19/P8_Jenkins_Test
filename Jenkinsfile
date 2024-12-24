@@ -67,6 +67,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building the application...'
+                bat 'npm run build' // Perintah build aplikasi
                 // Tambahkan perintah build jika diperlukan
             }
             post {

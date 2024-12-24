@@ -5,7 +5,8 @@
   "scripts": {
     "test": "jest --forceExit",
     "test:unit": "npx mocha ./unit.test.mjs",
-    "test:integration": "npx mocha ./integration.test.mjs"
+    "test:integration": "npx mocha ./integration.test.mjs",
+    "build": "webpack --config webpack.config.js"
   },
   "keywords": [],
   "author": "fadhil",
