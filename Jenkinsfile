@@ -8,43 +8,28 @@ pipeline {
             steps {
                 git branch: 'main', url: 'https://github.com/fadhil19/P8_Jenkins_Test'
             }
-            post {
-                success {
-                    emailext subject: 'Checkout Succeeded', body: 'The Checkout stage succeeded!', 
-                    recipientProviders: [[$class: 'DevelopersRecipientProvider']]
-                }
-                failure {
-                    emailext subject: 'Checkout Failed', body: 'The Checkout stage failed.', 
-                    recipientProviders: [[$class: 'DevelopersRecipientProvider']]
-                }
-            }
         }
         stage('Install Dependencies') {
             steps {
                 bat 'npm install'
-            }
-            post {
-                success {
-                    emailext subject: 'Install Dependencies Succeeded', body: 'The Install Dependencies stage succeeded!', 
-                    recipientProviders: [[$class: 'DevelopersRecipientProvider']]
-                }
-                failure {
-                    emailext subject: 'Install Dependencies Failed', body: 'The Install Dependencies stage failed.', 
-                    recipientProviders: [[$class: 'DevelopersRecipientProvider']]
-                }
             }
         }
         stage('Run Unit Tests') {
             steps {
                 bat 'npm run test:unit'
             }
+        }
+        stage('Run Integration Tests') { // Stage baru untuk integration tests
+            steps {
+                bat 'npm run test:integration' // Perintah untuk menjalankan integration tests
+            }
             post {
                 success {
-                    emailext subject: 'Run Unit Tests Succeeded', body: 'The Run Unit Tests stage succeeded!', 
+                    emailext subject: 'Integration Tests Succeeded', body: 'The Integration Tests stage succeeded!', 
                     recipientProviders: [[$class: 'DevelopersRecipientProvider']]
                 }
                 failure {
-                    emailext subject: 'Run Unit Tests Failed', body: 'The Run Unit Tests stage failed.', 
+                    emailext subject: 'Integration Tests Failed', body: 'The Integration Tests stage failed.', 
                     recipientProviders: [[$class: 'DevelopersRecipientProvider']]
                 }
             }
@@ -54,31 +39,11 @@ pipeline {
                 echo 'Building the application...'
                 // Tambahkan perintah build jika diperlukan
             }
-            post {
-                success {
-                    emailext subject: 'Build Succeeded', body: 'The Build stage succeeded!', 
-                    recipientProviders: [[$class: 'DevelopersRecipientProvider']]
-                }
-                failure {
-                    emailext subject: 'Build Failed', body: 'The Build stage failed.', 
-                    recipientProviders: [[$class: 'DevelopersRecipientProvider']]
-                }
-            }
         }
         stage('Deploy') {
             steps {
                 echo 'Deploying the application...'
                 // Tambahkan perintah deploy jika diperlukan
-            }
-            post {
-                success {
-                    emailext subject: 'Deploy Succeeded', body: 'The Deploy stage succeeded!', 
-                    recipientProviders: [[$class: 'DevelopersRecipientProvider']]
-                }
-                failure {
-                    emailext subject: 'Deploy Failed', body: 'The Deploy stage failed.', 
-                    recipientProviders: [[$class: 'DevelopersRecipientProvider']]
-                }
             }
         }
     }
