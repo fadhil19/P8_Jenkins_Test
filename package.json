@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "test": "jest --forceExit",
     "test:unit": "npx mocha ./unit.test.mjs",
     "test:integration": "npx mocha ./integration.test.mjs"
   },
@@ -11,7 +12,8 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "express": "^4.21.2"
+    "express": "^4.21.2",
+    "jest": "^29.7.0"
   },
   "devDependencies": {
     "chai": "^5.1.2",
