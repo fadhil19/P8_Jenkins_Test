@@ -85,6 +85,7 @@ pipeline {
             steps {
                 echo 'Deploying to the staging server...'
                 // Perintah untuk deploy ke server staging
+                bat 'dir ./build' // Debugging: Periksa isi direktori build
                 bat 'scp -r ./build user@staging-server:/var/www/app'
                 bat 'ssh user@staging-server "sudo systemctl restart app"'
             }
